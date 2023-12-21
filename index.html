@@ -20,11 +20,39 @@
       </div>
     </header>
     <main>
-      <aside></aside>
+      <aside>
+        <form>
+          <h2>Increase your collection</h2>
+          <div>
+            Title: <input type="text" data-value="title">
+          </div>
+          <p id="error_title"></p>
+          <div>
+            Author first name <input type="text" data-value="first_name">
+          </div>
+          <p id="error_first_name"></p>
+          <div>
+            Author last name <input type="text" data-value="last_name">
+            <p id="error_last_name"></p>
+          </div>
+          <div>
+            Number of pages <input type="text" data-value="number_of_pages">
+            <p id="error_number_of_pages"></p>
+          </div>
+          <div>
+            isReaded <input type="checkbox" data-value="is_readed">
+            
+          </div>
+          <div>
+            <button type="button">Add Book</button>
+          </div>
+          <p id="error_default"></p>
+        </form>
+      </aside>
       <article></article>
     </main>
     <footer>
-      <p>Copyright 2023 PolisChowChow</p>
+      <p>Copyright 2023 PolishChowChow</p>
     </footer>
     <script type="module" src="/src/main.ts"></script>
   </body>

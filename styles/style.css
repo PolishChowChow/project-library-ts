@@ -26,6 +26,15 @@ header > div{
 main{
     flex: 1;
     background-color: #F4EAE0;
+    display: flex;
+}
+aside{
+    width: 40%;
+    display: grid;
+    place-items: center;
+}
+article{
+    flex: 1;
 }
 footer{
     background-color: #527853;
