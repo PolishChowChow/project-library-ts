@@ -1,6 +1,6 @@
 type BookType  = {
-    title: String,
-    authorName: String,
+    title: string,
+    authorName: string,
     numberOfPages: Number,
     isReaded: Boolean
 }

@@ -9,9 +9,9 @@ class bookListClass{
     addBook(book: BookTypeWithId){
         this.list = [...this.list, book]
     }
-    deleteBook(deletedBook: BookTypeWithId){
+    deleteBook(bookId: string){
         this.list = this.list.filter(book => {
-            book.id !== deletedBook.id
+            book.id !== bookId
         })
     }
 }
