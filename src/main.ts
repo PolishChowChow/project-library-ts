@@ -1,3 +1,4 @@
+import Book from "./bookClass";
 import bookListClass from "./bookListClass";
 import BookType from "./types/bookType";
 import BookTypeWithId from "./types/bookTypeWithId";
@@ -8,6 +9,7 @@ const emptyBook:BookType = {
     numberOfPages: 0,
     isReaded: false,
 }
+let book:BookType = emptyBook
 let NAME_ARRAY: string[] = ["",""]
 const BookList = new bookListClass();
 function addBook(book: BookTypeWithId):void{
@@ -16,24 +18,28 @@ function addBook(book: BookTypeWithId):void{
     const tIsReaded:string = isReaded+"";
     const parent = document.querySelector("div.parent-container");
     const bookContainer = document.createElement("div")
+    const titleBar = document.createElement("h1");
+    titleBar.textContent = title
+    bookContainer.classList.add("book")
     const deleteButton = document.createElement("button");
     deleteButton.dataset.delete = id;
     deleteButton.textContent = "Delete"
     bookContainer.setAttribute("id", id)
-    bookContainer.appendChild(setParagraph(title));
-    bookContainer.appendChild(setParagraph(authorName));
-    bookContainer.appendChild(setParagraph(tNumberOfPages));
-    bookContainer.appendChild(setParagraph(tIsReaded));
-    
+    bookContainer.appendChild(titleBar)
+    bookContainer.appendChild(setParagraph("Author:",authorName));
+    bookContainer.appendChild(setParagraph("Number of pages",tNumberOfPages));
+    bookContainer.appendChild(setParagraph("Is readed",tIsReaded));
+    bookContainer.appendChild(deleteButton);
     parent?.appendChild(bookContainer)
     BookList.addBook(book)
 }
 function removeBook(id: string){
     BookList.deleteBook(id);
+    document.getElementById(`${id}`)?.remove();
 }
-function setParagraph(content: string):HTMLParagraphElement{
+function setParagraph(prefix:string, content: string):HTMLParagraphElement{
     const paragraph = document.createElement("p");
-    paragraph.textContent = content;
+    paragraph.textContent = `${prefix}: ${content}`;
     return paragraph
 }
 
@@ -58,9 +64,32 @@ function errorHandler(errorMessage:string, errorTarget?:string):void{
 
 form?.addEventListener("submit", (e:Event)=> {
     e.preventDefault()
+    book.authorName = NAME_ARRAY.join(" ");
+    NAME_ARRAY = [];
+    document.querySelectorAll("input").forEach((input:HTMLInputElement )=> {
+        input.value = ""
+    })
+    const bookToInsert = new Book(book)
+    addBook(bookToInsert.bookInfo)
+})
+document.querySelector("article")?.addEventListener("click", (e: Event) => {
+    const target = e.target as HTMLButtonElement;
+    console.log(target);
+    
+    if(target === null || target === undefined){
+        return;
+    }
+    console.log(target.dataset);
+    
+    if(target.dataset.delete !== undefined && target.dataset.delete !== null){
+        console.log("remove");
+        
+        removeBook(target.dataset.delete);
+    }
+
 })
 form?.addEventListener("input", (e: Event) => {
-    let book:BookType = emptyBook
+    
     
     if(!e.target){
         return;
