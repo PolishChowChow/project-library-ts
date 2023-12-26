@@ -14,5 +14,16 @@ class bookListClass{
             book.id !== bookId
         })
     }
+    updateStatus(bookId: string):void{
+        this.list = this.list.map(book => {
+            if(book.id === bookId){
+                return {
+                    ...book,
+                    isReaded: !book.isReaded
+                }
+            }
+            return book;
+        })
+    }
 }
 export default bookListClass;

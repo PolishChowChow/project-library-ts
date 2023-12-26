@@ -1,0 +1,24 @@
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+body{
+    min-height: 100vh;
+}
+.btn{
+    width: 100%;
+    margin: 5px;
+}
+@include media-breakpoint-up(md) {
+    .btn{
+        width: 40%;
+    }
+}
+@include media-breakpoint-up(lg) {
+    .btn{
+        width: 30%;
+    }
+}
+@include media-breakpoint-up(xl){
+    .btn{
+        width: 20%;
+    }
+}

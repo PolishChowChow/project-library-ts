@@ -1,73 +1,99 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css">
+
     <title>Library</title>
   </head>
-  <body>
-    <header>  
-      <div>
-        <h2>
-          Library
-        </h2>
-      </div>
-      <div> 
-        <h2>
-          PolishChowChow
-        </h2>
-      </div>
+  <body class="container d-flex flex-column p-3">
+    <header class="row text-center p-2">
+      <h2>Library - PolishChowChow</h2>
     </header>
-    <main>
-      <aside>
-        <form>
-          <h2>Increase your collection</h2>
+    <main class="row flex-grow-1 p-5">
+      <aside class="col-md-6 col-sm-12">
+        <form class="d-grid gap-3">
           <div>
-            Title: <input type="text" data-value="title">
-          </div>
-          <p id="error_title"></p>
-          <div>
-            Author first name <input type="text" data-value="first_name">
-          </div>
-          <p id="error_first_name"></p>
-          <div>
-            Author last name <input type="text" data-value="last_name">
-            <p id="error_last_name"></p>
-          </div>
-          <div>
-            Number of pages <input type="text" data-value="number_of_pages">
-            <p id="error_number_of_pages"></p>
+            <label for="title" class="form-label"
+              >Title <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              data-value="title"
+              class="form-control"
+              id="title"
+              required
+            />
           </div>
           <div>
-            isReaded <input type="checkbox" data-value="is_readed">
-            
+            <label for="first_name" class="form-label"
+              >Author's first name
+              <span class="text-danger">*</span>
+              </label
+            >
+            <input
+              type="text"
+              data-value="first_name"
+              class="form-control"
+              id="first_name"
+              required
+            />
           </div>
           <div>
-            <button type="submit">Add Book</button>
+            <label for="last_name" class="form-label">Author's last name
+              <span class="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              data-value="last_name"
+              class="form-control"
+              id="last_name"
+              required
+            />
+          </div>
+          <div>
+            <label for="description" class="form-label">Description
+              <span>(optional)</span>
+            </label>
+            <textarea id="description" class="form-control" data-value="description"></textarea>
+          </div>
+          <div>
+            <label for="number_of_pages" class="form-label"
+              >Number of pages
+              <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              data-value="number_of_pages"
+              required
+              id="number_of_pages"
+              class="form-control"
+            />
+          </div>
+          <div>
+            <div class="form-check form-switch">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                role="switch"
+                id="is_readed"
+                data-value="is_readed"
+              />
+              <label for="is_readed" class="form-check-label">Is readed</label>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary">Add Book</button>
           </div>
           <p id="error_default"></p>
         </form>
       </aside>
-      <article>
+      <article class="col-md-6 col-sm-12">
         <div class="parent-container">
-          
-          <div class="book">
-            <h1>Title</h1>
-            <p>Author: First Name, Last Name</p>
-            <p>Number of pages: 2323</p>
-            <p>Is readed: true</p>
-          </div>
-          <div class="book">
-            <h1>Title</h1>
-            <p>Author: First Name, Last Name</p>
-            <p>Number of pages: 2323</p>
-            <p>Is readed: true</p>
-          </div>
         </div>
       </article>
     </main>
-    <footer>
+    <footer class="row text-center">
       <p>Copyright 2023 PolishChowChow</p>
     </footer>
     <script type="module" src="/src/main.ts"></script>
